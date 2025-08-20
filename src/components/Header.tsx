@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { useCart } from '@/hooks/useCart';
+import { Link } from 'react-router-dom';
 
 interface HeaderProps {
   onSearch: (query: string) => void;
@@ -25,12 +26,12 @@ export const Header = ({ onSearch, onCartClick }: HeaderProps) => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-mango-gradient rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">🥭</span>
             </div>
             <h1 className="text-2xl font-bold text-foreground">Sunstone Market</h1>
-          </div>
+          </Link>
 
           {/* Search Bar - Desktop */}
           <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl mx-8">
@@ -54,6 +55,12 @@ export const Header = ({ onSearch, onCartClick }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4">
+            <Link to="/about">
+              <Button variant="ghost" size="sm">About</Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="ghost" size="sm">Contact</Button>
+            </Link>
             <Button variant="ghost" size="sm">
               <User className="h-4 w-4 mr-2" />
               Account
@@ -111,6 +118,12 @@ export const Header = ({ onSearch, onCartClick }: HeaderProps) => {
             </form>
             
             <div className="space-y-2">
+              <Link to="/about" className="block">
+                <Button variant="ghost" className="w-full justify-start">About</Button>
+              </Link>
+              <Link to="/contact" className="block">
+                <Button variant="ghost" className="w-full justify-start">Contact</Button>
+              </Link>
               <Button variant="ghost" className="w-full justify-start">
                 <User className="h-4 w-4 mr-2" />
                 Account
